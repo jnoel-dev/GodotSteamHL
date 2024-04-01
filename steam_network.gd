@@ -357,7 +357,7 @@ func _read_p2p_packet(packet_size:int):
 	var packet = Steam.readP2PPacket(packet_size, 0)
 	
 	# or empty if it fails
-	if packet.empty():
+	if packet.is_empty():
 		push_warning("Steam Networking: read an empty packet with non-zero size!")
 
 	# Get the remote user's ID
