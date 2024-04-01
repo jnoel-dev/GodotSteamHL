@@ -1,22 +1,22 @@
 extends Node
 
-var app_id
-var steam_id
+var app_id: int
+var steam_id: int
 var is_online: bool
 var is_game_owned: bool
 
-func is_steam_enabled():
+func is_steam_enabled() -> bool:
 	return OS.has_feature("steam") or OS.is_debug_build()
 
-func _init():
+func _init() -> void:
 	OS.set_environment("SteamAppID", str(app_id))
 	OS.set_environment("SteamGameID", str(app_id))
 
-func _ready():
+func _ready() -> void:
 	if not is_steam_enabled():
 		return
 	
-	var init = Steam.steamInit()
+	var init: Dictionary = Steam.steamInit()
 	print("Did Steam initialize?: "+str(init))
 
 	if init['status'] != 1:
@@ -31,8 +31,8 @@ func _ready():
 		print("User does not own this game")
 		get_tree().quit()
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	Steam.run_callbacks()
 
-func get_profile_name():
+func get_profile_name() -> void:
 	return Steam.getPersonaName()
