@@ -418,7 +418,7 @@ func _handle_packet(sender_id, payload: PackedByteArray):
 	var packet_type = payload[0]
 	var packet_data = null
 	if payload.size() > 1:
-		packet_data = payload.slice(1, payload.size()-1)
+		packet_data = payload.slice(1, payload.size())
 	match packet_type:
 		PACKET_TYPE.HANDSHAKE:
 			_send_p2p_command_packet(sender_id, PACKET_TYPE.HANDSHAKE_REPLY)
