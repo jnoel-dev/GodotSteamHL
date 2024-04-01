@@ -110,7 +110,7 @@ func _on_lobby_join_requested(lobby_id: int, friend_id):
 	print("Attempting to join lobby %s from request" % lobby_id)
 	# Attempt to join the lobby
 	emit_signal("lobby_join_requested", lobby_id)
-#	join_lobby(lobby_id)
+	join_lobby(lobby_id)
 	
 func _update_lobby_members():
 		# Clear your previous lobby list
@@ -196,7 +196,7 @@ func _check_command_line():
 			# An invite argument was passed
 			if _lobby_invite_arg:
 				emit_signal("lobby_join_requested", int(arg))
-#				join_lobby(int(arg))
+				join_lobby(int(arg))
 
 			# A Steam connection argument exists
 			if arg == "+connect_lobby":
