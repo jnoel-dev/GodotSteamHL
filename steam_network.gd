@@ -568,7 +568,7 @@ func _on_p2p_session_request(remote_steam_id):
 	var requestor = Steam.getFriendPersonaName(remote_steam_id)
 	
 	# Only accept this p2p request if its from the host of the lobby.
-	if SteamLobby.get_owner() == remote_steam_id:
+	if SteamLobby.get_lobby_owner() == remote_steam_id:
 		Steam.acceptP2PSessionWithUser(remote_steam_id)
 	else:
 		push_warning("Got a rogue p2p session request from %s. Not accepting." % remote_steam_id)
